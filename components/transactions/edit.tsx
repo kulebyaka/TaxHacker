@@ -10,12 +10,13 @@ import { FormInput, FormTextarea } from "@/components/forms/simple"
 import { Button } from "@/components/ui/button"
 import { Category, Currency, Field, Project, Transaction } from "@/prisma/client"
 import { format } from "date-fns"
-import { Loader2, Save, Trash2 } from "lucide-react"
+import { Loader2, Save, Trash2, FileText } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { startTransition, useActionState, useEffect, useMemo, useState } from "react"
 import ToolWindow from "@/components/agents/tool-window"
 import { ItemsDetectTool } from "@/components/agents/items-detect"
 import { TransactionData } from "@/models/transactions"
+import { exportTransactionToISDOC } from "@/app/(app)/transactions/isdoc-actions"
 
 export default function TransactionEditForm({
   transaction,
@@ -35,6 +36,9 @@ export default function TransactionEditForm({
   const router = useRouter()
   const [deleteState, deleteAction, isDeleting] = useActionState(deleteTransactionAction, null)
   const [saveState, saveAction, isSaving] = useActionState(saveTransactionAction, null)
+  const [isExportingISDOC, setIsExportingISDOC] = useState(false)
+  
+  const isISDOCEnabled = settings.isdoc_enabled === "true"
 
   const extraFields = fields.filter((field) => field.isExtra)
   const [formData, setFormData] = useState({
@@ -76,6 +80,24 @@ export default function TransactionEditForm({
         await deleteAction(transaction.id)
         router.back()
       })
+    }
+  }
+  
+  const handleExportISDOC = async () => {
+    setIsExportingISDOC(true)
+    try {
+      const result = await exportTransactionToISDOC(transaction.id)
+      if (result.success) {
+        // TODO: Download the file when export is implemented
+        alert("ISDOC export functionality will be implemented soon!")
+      } else {
+        alert(result.error || "Failed to export to ISDOC")
+      }
+    } catch (error) {
+      console.error("ISDOC export error:", error)
+      alert("Failed to export to ISDOC")
+    } finally {
+      setIsExportingISDOC(false)
     }
   }
 
@@ -244,6 +266,43 @@ export default function TransactionEditForm({
           )}
         </Button>
       </div>
+
+        <div className="flex gap-2">
+          {isISDOCEnabled && (
+            <Button 
+              type="button" 
+              onClick={handleExportISDOC} 
+              variant="outline"
+              disabled={isExportingISDOC}
+            >
+              {isExportingISDOC ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Exporting...
+                </>
+              ) : (
+                <>
+                  <FileText className="h-4 w-4" />
+                  Export to ISDOC
+                </>
+              )}
+            </Button>
+          )}
+          
+          <Button type="submit" disabled={isSaving}>
+            {isSaving ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Saving...
+              </>
+            ) : (
+              <>
+                <Save className="h-4 w-4" />
+                Save Transaction
+              </>
+            )}
+          </Button>
+        </div>
 
       <div>
         {deleteState?.error && <FormError>{deleteState.error}</FormError>}

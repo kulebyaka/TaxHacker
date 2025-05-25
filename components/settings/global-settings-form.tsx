@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Category, Currency } from "@/prisma/client"
 import { CircleCheckBig } from "lucide-react"
 import { useActionState } from "react"
+import { ISDOCToggle } from "@/components/settings/isdoc-toggle"
+import { Separator } from "@/components/ui/separator"
 
 export default function GlobalSettingsForm({
   settings,
@@ -38,6 +40,13 @@ export default function GlobalSettingsForm({
         defaultValue={settings.default_category}
         categories={categories}
       />
+      
+      <Separator className="my-6" />
+      
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Advanced Features</h3>
+        <ISDOCToggle enabled={settings.isdoc_enabled === "true"} />
+      </div>
 
       <div className="flex flex-row items-center gap-4">
         <Button type="submit" disabled={pending}>

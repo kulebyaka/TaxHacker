@@ -21,6 +21,9 @@ import { updateUser } from "@/models/users"
 import { Prisma, User } from "@/prisma/client"
 import { revalidatePath } from "next/cache"
 import path from "path"
+import { addISDOCFieldsToUser, hasISDOCFields } from "@/models/isdoc-utils"
+import { ISDOC_FIELDS } from "@/models/isdoc-fields"
+import { ISDOC_PROMPT_TEMPLATE_CZ } from "@/ai/isdoc-prompt"
 
 export async function saveSettingsAction(
   _prevState: ActionState<SettingsMap> | null,
@@ -276,4 +279,64 @@ export async function deleteFieldAction(userId: string, code: string) {
   }
   revalidatePath("/settings/fields")
   return { success: true }
+}
+
+export async function enableISDOCAction(): Promise<ActionState<void>> {
+  const user = await getCurrentUser()
+  
+  try {
+    // Check if already enabled
+    const alreadyEnabled = await hasISDOCFields(user.id)
+    if (alreadyEnabled) {
+      return { success: true }
+    }
+    
+    // Add ISDOC fields
+    await addISDOCFieldsToUser(user.id)
+    
+    // Set the ISDOC prompt as a user setting
+    await updateSettings(user.id, "prompt_analyse_isdoc", ISDOC_PROMPT_TEMPLATE_CZ)
+    
+    // Set a flag to indicate ISDOC is enabled
+    await updateSettings(user.id, "isdoc_enabled", "true")
+    
+    revalidatePath("/settings")
+    revalidatePath("/settings/fields")
+    return { success: true }
+  } catch (error) {
+    console.error("Failed to enable ISDOC:", error)
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : "Failed to enable ISDOC support" 
+    }
+  }
+}
+
+export async function disableISDOCAction(): Promise<ActionState<void>> {
+  const user = await getCurrentUser()
+  
+  try {
+    // Remove ISDOC fields
+    for (const field of ISDOC_FIELDS) {
+      try {
+        await deleteField(user.id, field.code)
+      } catch (error) {
+        // Field might not exist, continue
+        console.log(`Field ${field.code} not found, skipping`)
+      }
+    }
+    
+    // Update the flag
+    await updateSettings(user.id, "isdoc_enabled", "false")
+    
+    revalidatePath("/settings")
+    revalidatePath("/settings/fields")
+    return { success: true }
+  } catch (error) {
+    console.error("Failed to disable ISDOC:", error)
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : "Failed to disable ISDOC support" 
+    }
+  }
 }

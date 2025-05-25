@@ -184,6 +184,19 @@ export const bulkDeleteTransactions = async (ids: string[], userId: string) => {
   })
 }
 
+export const getTransactionsByIds = cache(async (ids: string[], userId: string): Promise<Transaction[]> => {
+  return await prisma.transaction.findMany({
+    where: { 
+      id: { in: ids }, 
+      userId 
+    },
+    include: {
+      category: true,
+      project: true,
+    },
+  })
+})
+
 const splitTransactionDataExtraFields = async (
   data: TransactionData,
   userId: string

@@ -20,6 +20,7 @@ import path from "path"
 import { randomUUID } from "crypto"
 import { readFile, writeFile } from "fs/promises"
 import { getDirectorySize } from "@/lib/files"
+import { ISDOC_PROMPT_TEMPLATE_CZ } from "@/ai/isdoc-prompt"
 
 export async function analyzeFileAction(
   file: File,
@@ -61,8 +62,18 @@ export async function analyzeFileAction(
     return { success: false, error: "Failed to retrieve files: " + error }
   }
 
+  // Check if ISDOC is enabled and use appropriate prompt
+  let promptTemplate = settings.prompt_analyse_new_file || DEFAULT_PROMPT_ANALYSE_NEW_FILE
+  
+  if (settings.isdoc_enabled === "true" && settings.prompt_analyse_isdoc) {
+    promptTemplate = settings.prompt_analyse_isdoc
+  } else if (settings.isdoc_enabled === "true") {
+    // Fallback to default ISDOC prompt if setting is missing
+    promptTemplate = ISDOC_PROMPT_TEMPLATE_CZ
+  }
+  
   const prompt = buildLLMPrompt(
-    settings.prompt_analyse_new_file || DEFAULT_PROMPT_ANALYSE_NEW_FILE,
+    promptTemplate,
     fields,
     categories,
     projects
