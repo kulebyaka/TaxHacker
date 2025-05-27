@@ -87,9 +87,17 @@ export default function TransactionEditForm({
     setIsExportingISDOC(true)
     try {
       const result = await exportTransactionToISDOC(transaction.id)
-      if (result.success) {
-        // TODO: Download the file when export is implemented
-        alert("ISDOC export functionality will be implemented soon!")
+      if (result.success && result.data) {
+        // Create a blob and download the file
+        const blob = new Blob([result.data.content], { type: 'application/xml' })
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = result.data.filename
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
       } else {
         alert(result.error || "Failed to export to ISDOC")
       }

@@ -43,8 +43,38 @@ export function BulkActionsMenu({ selectedIds, onActionComplete, isISDOCEnabled 
       if (!result.success) {
         throw new Error(result.error)
       }
-      // TODO: Download the files when export is implemented
-      alert(`ISDOC export for ${selectedIds.length} transaction(s) will be implemented soon!`)
+      
+      if (result.data && result.data.length > 0) {
+        // If single file, download directly
+        if (result.data.length === 1) {
+          const file = result.data[0]
+          const blob = new Blob([file.content], { type: 'application/xml' })
+          const url = window.URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.href = url
+          a.download = file.filename
+          document.body.appendChild(a)
+          a.click()
+          window.URL.revokeObjectURL(url)
+          document.body.removeChild(a)
+        } else {
+          // For multiple files, create a zip (requires JSZip library)
+          // For now, we'll download them one by one with a delay
+          for (const file of result.data) {
+            const blob = new Blob([file.content], { type: 'application/xml' })
+            const url = window.URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = file.filename
+            document.body.appendChild(a)
+            a.click()
+            window.URL.revokeObjectURL(url)
+            document.body.removeChild(a)
+            // Small delay between downloads
+            await new Promise(resolve => setTimeout(resolve, 100))
+          }
+        }
+      }
     } catch (error) {
       console.error("Failed to export to ISDOC:", error)
       alert(`Failed to export to ISDOC: ${error}`)

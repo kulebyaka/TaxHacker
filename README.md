@@ -94,10 +94,23 @@ Once all documents have been uploaded and analyzed, you can view, filter and exp
 
 - Filter transactions by time, category, and other features
 - Use full-text search by recognized document content
-- Export filtered transactions to CSV with attached documents
+- Export filtered transactions to CSV or ISDOC with attached documents
 - Upload your entire income and expense history at the end of the year for your tax advisor to analyze
 
-### `6` Local data storage and self-hosting
+### `6` Czech Invoice Support
+
+![Czech Invoice Support](docs/screenshots/czech_invoice.png)
+
+Specialized support for Czech accounting needs with advanced features:
+
+- Automatic detection and parsing of Czech invoice formats
+- Extraction of VAT numbers, IČO, DIČ, and other Czech-specific fields
+- Support for Czech date formats and currency (CZK)
+- Validation of Czech tax identification numbers
+- Custom templates for common Czech invoice layouts
+- Integration with Czech accounting systems through ISDOC export
+
+### `7` Local data storage and self-hosting
 
 ![Self-hosting](docs/screenshots/exported_archive.png)
 
