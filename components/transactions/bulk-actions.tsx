@@ -41,7 +41,7 @@ export function BulkActionsMenu({ selectedIds, onActionComplete, isISDOCEnabled 
       setIsExporting(true)
       const result = await exportTransactionsToISDOC(selectedIds)
       if (!result.success) {
-        throw new Error(result.error)
+        throw new Error(result.error || 'Unknown error occurred')
       }
       
       if (result.data && result.data.length > 0) {

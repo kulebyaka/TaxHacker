@@ -1,13 +1,13 @@
 services:
   app:
-    image: ghcr.io/vas3k/taxhacker:latest
+    image: ghcr.io/kulebyaka/taxhacker:latest
     ports:
       - "7331:7331"
     environment:
       - NODE_ENV=production
       - SELF_HOSTED_MODE=true
       - UPLOAD_PATH=/app/data/uploads
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/taxhacker
+      - DATABASE_URL=postgresql://postgres:morrowind@localhost:5432/taxhacker
     volumes:
       - ./data:/app/data
     restart: unless-stopped

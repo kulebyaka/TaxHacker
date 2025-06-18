@@ -3,7 +3,7 @@ export const ISDOC_FIELDS = [
   // Invoice metadata
   {
     code: "invoice_number",
-    name: "Invoice Number",
+    name: "Číslo faktury",
     type: "string",
     llm_prompt: "invoice number (číslo faktury)",
     isVisibleInList: true,
@@ -13,7 +13,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "variable_symbol",
-    name: "Variable Symbol",
+    name: "Variabilní symbol",
     type: "string",
     llm_prompt: "variable symbol (variabilní symbol) - payment reference number",
     isVisibleInList: false,
@@ -23,7 +23,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "constant_symbol",
-    name: "Constant Symbol",
+    name: "Konstantní symbol",
     type: "string",
     llm_prompt: "constant symbol (konstantní symbol) - bank payment code",
     isVisibleInList: false,
@@ -33,7 +33,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "specific_symbol",
-    name: "Specific Symbol",
+    name: "Specifický symbol",
     type: "string",
     llm_prompt: "specific symbol (specifický symbol) - additional payment reference",
     isVisibleInList: false,
@@ -43,7 +43,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "payment_method",
-    name: "Payment Method",
+    name: "Způsob platby",
     type: "string",
     llm_prompt: "payment method (forma úhrady) - e.g. Příkazem, Hotově, Kartou",
     isVisibleInList: false,
@@ -53,7 +53,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "due_date",
-    name: "Due Date",
+    name: "Datum splatnosti",
     type: "string",
     llm_prompt: "due date (datum splatnosti) in YYYY-MM-DD format",
     isVisibleInList: true,
@@ -63,7 +63,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "tax_date",
-    name: "Tax Date",
+    name: "Datum zdanitelného plnění",
     type: "string",
     llm_prompt: "tax point date (datum uskutečnění zdanitelného plnění) in YYYY-MM-DD format",
     isVisibleInList: false,
@@ -75,7 +75,7 @@ export const ISDOC_FIELDS = [
   // Supplier information
   {
     code: "supplier_name",
-    name: "Supplier Name",
+    name: "Dodavatel",
     type: "string",
     llm_prompt: "supplier/seller company name (dodavatel)",
     isVisibleInList: false,
@@ -85,7 +85,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "supplier_address",
-    name: "Supplier Address",
+    name: "Adresa dodavatele",
     type: "string",
     llm_prompt: "supplier full address including street, city, postal code",
     isVisibleInList: false,
@@ -95,7 +95,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "supplier_ic",
-    name: "Supplier IČ",
+    name: "IČO dodavatele",
     type: "string",
     llm_prompt: "supplier company ID (IČ) - 8 digit number",
     isVisibleInList: false,
@@ -105,7 +105,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "supplier_dic",
-    name: "Supplier DIČ",
+    name: "DIČ dodavatele",
     type: "string",
     llm_prompt: "supplier tax ID (DIČ) - starts with CZ followed by IČ",
     isVisibleInList: false,
@@ -115,7 +115,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "supplier_bank_account",
-    name: "Supplier Bank Account",
+    name: "Číslo účtu dodavatele",
     type: "string",
     llm_prompt: "supplier bank account number (číslo účtu)",
     isVisibleInList: false,
@@ -125,7 +125,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "supplier_bank_code",
-    name: "Supplier Bank Code",
+    name: "Kód banky dodavatele",
     type: "string",
     llm_prompt: "supplier bank code (kód banky) - 4 digit number after slash",
     isVisibleInList: false,
@@ -137,7 +137,7 @@ export const ISDOC_FIELDS = [
   // Customer information
   {
     code: "customer_name",
-    name: "Customer Name",
+    name: "Odběratel",
     type: "string",
     llm_prompt: "customer/buyer company name (odběratel)",
     isVisibleInList: false,
@@ -147,7 +147,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "customer_address",
-    name: "Customer Address",
+    name: "Adresa odběratele",
     type: "string",
     llm_prompt: "customer full address including street, city, postal code",
     isVisibleInList: false,
@@ -157,7 +157,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "customer_ic",
-    name: "Customer IČ",
+    name: "IČO odběratele",
     type: "string",
     llm_prompt: "customer company ID (IČ) - 8 digit number",
     isVisibleInList: false,
@@ -167,7 +167,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "customer_dic",
-    name: "Customer DIČ",
+    name: "DIČ odběratele",
     type: "string",
     llm_prompt: "customer tax ID (DIČ) - starts with CZ followed by IČ",
     isVisibleInList: false,
@@ -179,7 +179,7 @@ export const ISDOC_FIELDS = [
   // Line items - stored as JSON
   {
     code: "line_items",
-    name: "Line Items",
+    name: "Položky faktury",
     type: "string", // Will store JSON array
     llm_prompt: "detailed line items as JSON array with fields: code, description, quantity, unit, unit_price, total, vat_rate, vat_amount",
     isVisibleInList: false,
@@ -191,7 +191,7 @@ export const ISDOC_FIELDS = [
   // Totals
   {
     code: "total_without_vat",
-    name: "Total Without VAT",
+    name: "Základ bez DPH",
     type: "number",
     llm_prompt: "total amount without VAT (základ)",
     isVisibleInList: false,
@@ -201,7 +201,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "total_vat_base",
-    name: "Total VAT Base",
+    name: "Základ DPH",
     type: "string", // Will store JSON object with VAT breakdown
     llm_prompt: "VAT base amounts by rate as JSON object, e.g. {\"0\": 1000, \"12\": 2000, \"21\": 3000}",
     isVisibleInList: false,
@@ -211,7 +211,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "total_vat_amounts",
-    name: "Total VAT Amounts",
+    name: "Součet DPH",
     type: "string", // Will store JSON object with VAT amounts
     llm_prompt: "VAT amounts by rate as JSON object, e.g. {\"0\": 0, \"12\": 240, \"21\": 630}",
     isVisibleInList: false,
@@ -223,7 +223,7 @@ export const ISDOC_FIELDS = [
   // Additional info
   {
     code: "order_number",
-    name: "Order Number",
+    name: "Číslo objednávky",
     type: "string",
     llm_prompt: "order number (číslo objednávky) if present",
     isVisibleInList: false,
@@ -233,7 +233,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "delivery_note_number",
-    name: "Delivery Note Number",
+    name: "Číslo dodacího listu",
     type: "string",
     llm_prompt: "delivery note number (číslo dodacího listu) if present",
     isVisibleInList: false,
@@ -243,7 +243,7 @@ export const ISDOC_FIELDS = [
   },
   {
     code: "notes",
-    name: "Invoice Notes",
+    name: "Poznámky",
     type: "string",
     llm_prompt: "any additional notes or legal text on the invoice",
     isVisibleInList: false,

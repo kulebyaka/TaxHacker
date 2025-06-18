@@ -29,7 +29,7 @@ export default function TransactionEditForm({
   transaction: Transaction
   categories: Category[]
   projects: Project[]
-  currencies: Currency[]
+  currencies: Currency[] 
   fields: Field[]
   settings: Record<string, string>
 }) {
@@ -88,22 +88,21 @@ export default function TransactionEditForm({
     try {
       const result = await exportTransactionToISDOC(transaction.id)
       if (result.success && result.data) {
-        // Create a blob and download the file
-        const blob = new Blob([result.data.content], { type: 'application/xml' })
-        const url = window.URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = result.data.filename
-        document.body.appendChild(a)
-        a.click()
-        window.URL.revokeObjectURL(url)
-        document.body.removeChild(a)
+          const blob = new Blob([result.data.content], { type: 'application/xml' })
+          const url = window.URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.href = url
+          a.download = result.data.filename
+          document.body.appendChild(a)
+          a.click()
+          window.URL.revokeObjectURL(url)
+          document.body.removeChild(a)
       } else {
         alert(result.error || "Failed to export to ISDOC")
       }
     } catch (error) {
       console.error("ISDOC export error:", error)
-      alert("Failed to export to ISDOC")
+      alert("Failed to export to ISDOC: " + (error instanceof Error ? error.message : String(error)))
     } finally {
       setIsExportingISDOC(false)
     }
@@ -260,23 +259,7 @@ export default function TransactionEditForm({
           </>
         </Button>
 
-        <Button type="submit" disabled={isSaving}>
-          {isSaving ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Saving...
-            </>
-          ) : (
-            <>
-              <Save className="h-4 w-4" />
-              Save Transaction
-            </>
-          )}
-        </Button>
-      </div>
-
-        <div className="flex gap-2">
-          {isISDOCEnabled && (
+        {isISDOCEnabled && (
             <Button 
               type="button" 
               onClick={handleExportISDOC} 
@@ -296,21 +279,21 @@ export default function TransactionEditForm({
               )}
             </Button>
           )}
-          
-          <Button type="submit" disabled={isSaving}>
-            {isSaving ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
-              </>
-            ) : (
-              <>
-                <Save className="h-4 w-4" />
-                Save Transaction
-              </>
-            )}
-          </Button>
-        </div>
+
+        <Button type="submit" disabled={isSaving}>
+          {isSaving ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Saving...
+            </>
+          ) : (
+            <>
+              <Save className="h-4 w-4" />
+              Save Transaction
+            </>
+          )}
+        </Button>
+      </div>
 
       <div>
         {deleteState?.error && <FormError>{deleteState.error}</FormError>}

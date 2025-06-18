@@ -1,0 +1,42 @@
+services:
+  app:
+    image: ghcr.io/kulebyaka/taxhacker:latest
+    container_name: taxhacker_app
+    restart: unless-stopped
+    env_file:
+      - .vps.env
+    environment:
+      - NODE_ENV=production
+      - UPLOAD_PATH=/app/data/uploads
+    volumes:
+      - ./data:/app/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "7331:7331"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "3"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    env_file:
+      - .vps.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

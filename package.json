@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -p 7331 --turbopack",
-    "build": "next build",
-    "start": "prisma migrate deploy && next start",
+    "build": "prisma generate && next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -52,7 +52,7 @@
     "stripe": "^18.0.0",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
-    "xmlbuilder2": "^3.1.1",
+    "xml-js": "^1.6.11",
     "zod": "^3.24.2"
   },
   "devDependencies": {

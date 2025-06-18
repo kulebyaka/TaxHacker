@@ -11,6 +11,31 @@ export type AnalysisResult = {
   tokensUsed: number
 }
 
+// Helper function to clean JSON data by removing null characters
+function cleanJsonData(data: any): any {
+  if (data === null || data === undefined) return data;
+  
+  if (typeof data === 'string') {
+    return data.replace(/\u0000/g, '');
+  }
+  
+  if (Array.isArray(data)) {
+    return data.map(item => cleanJsonData(item));
+  }
+  
+  if (typeof data === 'object') {
+    const result: Record<string, any> = {};
+    for (const key in data) {
+      if (Object.prototype.hasOwnProperty.call(data, key)) {
+        result[key] = cleanJsonData(data[key]);
+      }
+    }
+    return result;
+  }
+  
+  return data;
+}
+
 export async function analyzeTransaction(
   prompt: string,
   schema: Record<string, unknown>,
@@ -58,9 +83,11 @@ export async function analyzeTransaction(
 
     const result = JSON.parse(response.output_text)
     
-    await updateFile(fileId, userId, { cachedParseResult: result })
+    const cleanedResult = cleanJsonData(result)
+    
+    await updateFile(fileId, userId, { cachedParseResult: cleanedResult })
 
-    return { success: true, data: { output: result, tokensUsed: response.usage?.total_tokens || 0 } }
+    return { success: true, data: { output: cleanedResult, tokensUsed: response.usage?.total_tokens || 0 } }
   } catch (error) {
     console.error("AI Analysis error:", error)
     return {

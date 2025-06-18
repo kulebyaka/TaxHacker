@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="cs" lang="cs" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <base href="//mv.gov.cz/isdoc/" />
+    <meta http-equiv="Content-Language" content="cs" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Ministerstvo vnitra bylo zřízeno na základě zákona č. 2/1969 Sb., o zřízení ministerstev a jiných ústředních orgánů státní správy České republiky, ve znění pozdějších předpisů. Ministerstvo vnitra je orgánem státní správy pro vnitřní věci, zejména pro veřejný pořádek a další věci vnitřního pořádku a bezpečnosti ve vymezeném rozsahu, včetně dohledu na bezpečnost a plynulost silničního provozu; jména a příjmení, matriky, státní občanství, občanské průkazy, hlášení pobytu, evidenci obyvatel a rodná čísla; sdružovací a shromažďovací právo a povolování organizací s mezinárodním prvkem; organizaci voleb; veřejné sbírky; archivnictví; zbraně a střelivo; požární ochranu; cestovní doklady, povolování pobytu cizinců a postavení uprchlíků; územní členění státu; státní hranice, jejich vyměřování, udržování a vedení dokumentárního díla; státní symboly; státní, hospodářské a služební tajemství. Ministerstvo vnitra dále zajišťuje telekomunikační síť Policie České republiky, spolupráci v rámci mezinárodní organizace Interpol a metodicky usměrňuje šifrovou službu. Ministerstvo vnitra zavádí do české veřejné správy eGovernment, včetně Informačního systému datových schránek." />
+    <meta name="keywords" content="veřejná správa, státní správa, metodická pomoc obcím, modernizace veřejné správy, hodnocení dopadu regulace, územní členění státu, státní hranice a jejich vyměřování, státní, hospodářské a služební tajemství, bezpečnost, prevence kriminality, bezpečnost a plynulost silničního provozu, jména a příjmení, matriky, státní občanství, osobní doklady, občanské průkazy, cestovní doklady, občan na úřadě, evidence obyvatel, rodná čísla, sdružovací a shromažďovací právo, petice, místní referendum, povolování organizací s mezinárodním prvkem, veřejné sbírky, politické strany, politická hnutí, občanská sdružení, archivnictví, spisová služba, zbraně a střelivo, lustrace, povolování pobytu cizinců, postavení uprchlíků, azyl, migrace, integrace, trvalý pobyt, přechodný pobyt, zelené karty, bezpečnostní výzkum a vývoj, neplatné doklady, nabídka míst, nabídka služebních míst, sbírka zákonů, správní řád, eGovernment, informační systém veřejné správy, Czech POINT, eGON, datové schránky, základní registry, komunikační infrastruktura veřejné správy, portál veřejné správy, elektronický podpis, digitální mapa veřejné správy, strukturální fondy, komunitární programy, finanční nástroje EU, Schengen, dobrovolnická služba, seznam občanských sdružení, seznam veřejných sbírek, seznam politických stran, adresy v ČR, mimořádné události, krizové řízení, krizové štáby, Bezpečnostní rada státu, slovník krizového řízení, Svět očima dětí, volby, korupce" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N396B6P');</script>
+    <!-- End Google Tag Manager -->
+            <link rel="icon" href="design/img/favicon.ico" type="image/ico" />
+    <link rel="SHORTCUT ICON" href="design/img/favicon.ico" />
+    <meta property="og:image" content="//mv.gov.cz/isdoc/design/img/logo-sn.jpg" />
+    <link rel="image_src" type="image/jpeg" href="//mv.gov.cz/isdoc/design/img/logo-sn.jpg" />
+    <link title="" href="SCRIPT/rss.aspx?nid=" type="application/rss+xml" rel="alternate" />
+    <link rel="stylesheet" href="//mv.gov.cz/isdoc/design/css/mvcr-screen.css?v=1" media="screen,projection" type="text/css" />
+    <link rel="stylesheet" href="//mv.gov.cz/isdoc/design/css/mvcr-homepage.css?v=1" media="screen,projection" type="text/css" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="//mv.gov.cz/isdoc/design/css/mvcr-tisk.css" media="print" type="text/css" />
+    <link rel="stylesheet" href="//mv.gov.cz/isdoc/design/css/mvcr-fix.css" media="screen,projection,print" type="text/css" />
+    <link rel="stylesheet" href="//mv.gov.cz/isdoc/design/css/mvcr-sa.css?v=2" media="screen,projection" type="text/css" />
+    <script type="text/javascript" src="//mv.gov.cz/isdoc/design/js/jquery-1.1.3.1.pack.js">/**/</script>
+    <script type="text/javascript" src="//mv.gov.cz/isdoc/design/js/main.js"> </script>
+    <link rel="stylesheet" media="screen" href="//mv.gov.cz/isdoc/design/css/design-govcz-styles.min.css" />
+    <link rel="stylesheet" media="print" href="//mv.gov.cz/isdoc/design/css/design-govcz-print.min.css" />
+    <script type="text/javascript" src="//mv.gov.cz/isdoc/design/js/design-govcz-scripts.min.js"> </script>
+    <script type="text/javascript" src="//mv.gov.cz/isdoc/design/js/design-govcz-init.js"> </script>
+    <script type="text/javascript">
+        window.onload = function () {
+        CookieConsentInitialize('.mv.gov.cz','/','docDetail.aspx?docid=50&amp;docType=ART');
+        };
+      </script><!--[if IE]><link rel="stylesheet" href="design/css/mvcr-screen-IE.css" media="screen,projection" type="text/css" /><![endif]--><title>Úvodní strana - Elektronická fakturace</title>
+  </head>
+  <body id="homepage" class="SA">
+    <div id="all">
+      <div id="top" class="img1">          
+      <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N396B6P" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+            <h1 class="logo">
+          <a href="default.aspx">
+                Elektronická fakturace
+                <span class="img1">
+                       
+                  </span>
+          </a>
+        </h1>
+        <h2 class="none">Přejdi na</h2>
+        <ul class="focus none">
+          <li>
+            <a href="#content">přejdi na obsah</a>
+            <span>|</span>
+          </li>
+          <li>
+            <a href="#h_menu">přejdi na hlavní menu</a>
+            <span>|</span>
+          </li>
+          <li>
+            <a href="#sidecol">přejdi na podmenu</a>
+          </li>
+        </ul>
+        <div id="search">
+          <form method="post" action="SCRIPT/fullTextSearch.aspx">
+            <p>
+              <label class="none" for="as_q">Hledat</label>
+              <input type="text" class="searchfield" id="as_q" name="as_q" />
+              <input name="ok" type="image" value="ok" src="design/img/but-ok.gif" alt="ok" />
+            </p>
+          </form>
+          <form action="#" method="post">
+            <p>
+              <label for="rmenu" class="none">Rychlé menu</label>
+              <select name="" id="rmenu" onchange="if(this.value != '') document.location=this.value;">
+                <option value="">Rychlé menu</option>
+              </select>
+            </p>
+          </form>
+        </div>
+        <p class="claim">
+        Elektronická fakturace
+        <span> </span>
+        </p>
+        <hr class="none" />
+        <p class="shortcuts">
+          <strong class="none">Rychlé linky:</strong>
+          <a href="mapa-stranek.aspx">Mapa serveru</a>
+          <a href="SCRIPT/default.aspx?baf=1">Textová verze</a>
+          <a href="fullTextSearch.aspx">Rozšířené vyhledávání</a>
+        </p>
+        <hr class="none" />
+      </div>
+      <a name="h_menu" class="none"> </a>
+      <div id="h_menu">
+        <h4 class="none">Hlavní menu</h4>
+        <ul>
+          <li class="first m1 sgLine">
+            <a href="Default.aspx">
+              <span>Úvod</span>
+            </a>
+          </li>
+          <li class=" m2 sgLine">
+            <a href="clanek/deklarace.aspx">
+              <span>Deklarace</span>
+            </a>
+          </li>
+          <li class=" m3 sgLine">
+            <a href="clanek/aktualni-verze.aspx">
+              <span>Aktuální verze</span>
+            </a>
+            <ul>
+              <li class="last">
+                <a href="clanek/aktualni-verze.aspx">
+                  <span>Verze 6.0.2</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class=" m4 sgLine">
+            <a href="historicke-verze.aspx">
+              <span>Historické verze</span>
+            </a>
+            <ul>
+              <li>
+                <a href="clanek/verze-6-0-1-z-26-5-2014.aspx">
+                  <span>Verze 6.0.1</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-3-1-z-30-12-2011.aspx">
+                  <span>Verze 5.3.1</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-3-z-14-2-2011.aspx">
+                  <span>Verze 5.3</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-2-3-z-14-2-2011.aspx">
+                  <span>Verze 5.2.3</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-2-2-z-7-12-2010.aspx">
+                  <span>Verze 5.2.2</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-2-1-z-18-3-2010.aspx">
+                  <span>Verze 5.2.1</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-2-z-25-10-2009.aspx">
+                  <span>Verze 5.2 (10-2009)</span>
+                </a>
+              </li>
+              <li>
+                <a href="clanek/verze-5-2-ze-7-7-2009.aspx">
+                  <span>Verze 5.2 (07-2009)</span>
+                </a>
+              </li>
+              <li class="last">
+                <a href="clanek/verze-5-1-z-10-3-2009.aspx">
+                  <span>Verze 5.1</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class=" m5 sgLine hpLast">
+            <a href="clanek/isdoc-web-kontakty-kontakty.aspx">
+              <span>Kontakt</span>
+            </a>
+          </li>
+        </ul>
+        <div class="clr"> </div>
+      </div>
+      <hr class="none" />
+      <a name="content" class="none"> </a>
+      <div id="main">
+        <div id="content_container">
+          <div id="content">
+            <div class="hpbox1">
+              <h2>Aktuality</h2>
+              <div class="perexBox">
+                <h3 class="first">
+                  <a href="clanek/nova-verze-formatu-elektronicke-fakturace-isdoc.aspx">Nová verze formátu elektronické fakturace ISDOC</a>
+                </h3>
+                <div>
+                  <div class="newsBoxMiniature">
+                    <a href="clanek/nova-verze-formatu-elektronicke-fakturace-isdoc.aspx">
+                      <img class="border2" src="SCRIPT/ViewImage.aspx?docid=58212" alt="formulář" width="83" height="61" />
+                    </a>
+           
+        </div>
+                  <div class="newsBoxAnnotation">
+                    <p>Ministerstvo vnitra vypracovalo novou verzi 6.0.2</p>
+                    <p class="authorDate">Tým 
+    ISDOC 
+          - 
+          2.7.2021</p>
+                  </div>
+                </div>
+              </div>
+              <div class="perexBox">
+                <h3>
+                  <a href="clanek/novy-mikroweb-isdoc.aspx">Nový mikroweb ISDOC</a>
+                </h3>
+                <div>
+                  <div class="newsBoxMiniature">
+                    <a href="clanek/novy-mikroweb-isdoc.aspx">
+                      <img class="border2" src="SCRIPT/ViewImage.aspx?docid=58248" alt="korupce" width="83" height="61" />
+                    </a>
+           
+        </div>
+                  <div class="newsBoxAnnotation">
+                    <p>Ministerstvo vnitra plně převzalo agendu elektronické fakturace ISDOC</p>
+                    <p class="authorDate">Tým 
+    ISDOC 
+          - 
+          2.7.2021</p>
+                  </div>
+                </div>
+              </div>
+              <div class="perexBox">
+                <h3>
+                  <a href="clanek/ict-unie-vytvorila-novou-verzi-formatu-elektronicke-fakturace-isdoc.aspx">ICT UNIE vytvořila novou verzi formátu elektronické fakturace ISDOC</a>
+                </h3>
+                <div>
+                  <div class="newsBoxMiniature">
+                    <a href="clanek/ict-unie-vytvorila-novou-verzi-formatu-elektronicke-fakturace-isdoc.aspx">
+                      <img class="border2" src="SCRIPT/ViewImage.aspx?docid=58232" alt="mezinárodní spolupráce" width="83" height="61" />
+                    </a>
+           
+        </div>
+                  <div class="newsBoxAnnotation">
+                    <p>Praha, 9. 4. 2014 - ICT UNIE, sdružení firem z oboru informačních technologií a elekt...</p>
+                    <p class="authorDate">Tým 
+    ISDOC 
+          - 
+          2.7.2021</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hpbox2">
+              <h2>
+            ELEKTRONICKÁ FAKTURACE
+          </h2>
+              <p>
+            Ministerstvo vnitra je držitelem licence k formátu ISDOC a její ochranné známky. Stalo se tak dne 5. května 2021 
+            popisem smlouvy mezi Ministerstvem vnitra a stávajícím držitelem spolkem ICT UNIE.
+          </p>
+              <p>
+            ISDOC (Information System Document) je formát elektronické fakturace v ČR, který definovala 
+            "Pracovní skupina pro Elektronické standardy výměny dat" sdružení SPIS. 
+            Dne 16. října 2008 byla podepsána "Deklarace o společném postupu v oblasti řešení elektronické fakturace v ČR". 
+            Tato deklarace vyjadřuje závazek jednotlivých výrobců ekonomických a ERP systémů 
+            (deklaraci podepsalo celkem 14 významných firem na trhu) vybudovat společný formát elektronické fakturace 
+            a do jednoho roku od jeho vyhlášení jej implementovat do svých komerčních řešení. 
+            Dalšími signatáři byli tehdejší zástupci státu, jmenovitě ministr financí Miroslav Kalousek 
+            a náměstek ministra vnitra Zdeněk Zajíček.             
+          </p>
+              <p>            
+            Výrobci ekonomických a podnikových systémů tedy budou používat standardizovanou formu exportů 
+            a přijímání elektronických fakturačních zpráv, což umožní podnikům a institucím - uživatelům různých SW - mezi sebou 
+            vzájemně komunikovat. 
+          </p>
+              <p>
+            MVČR deklaruje, kromě závazku zařazení standardu ISDOC do systematiky standardů ISVS, svůj zájem na dalším rozvoji 
+            tohoto formátu elektronické fakturace. Formát či jeho další ztvárnění budou optimalizována i v souvislosti 
+            s jeho zařazením mezi tzv. výstupní datové formáty podle zákona č. 499/2004 Sb. o archivnictví a spisové službě, 
+            přičemž v rámci efektivního využití výstupního datového formátu bude navrženo také řešení kombinující 
+            výstupní datový formát PDF/A a ISDOC a to způsobem, zabezpečujícím co možná nejvyšší efektivitu zpracování, 
+            zejména pak při příjmu veřejnoprávními původci se snahou o maximální možnou automatizaci činností.                      
+          </p>
+            </div>
+          </div>
+        </div>
+        <hr class="none" />
+        <div id="sidecol">
+          <p class="sites dots">
+            <a href="//mv.gov.cz" class="mvcr">MVČR<span> </span>
+            </a>
+          </p>
+          <p class="banners">
+            <a href="https://mv.gov.cz/volby/">
+              <img src="SCRIPT/ViewBanner.aspx?docid=22528757" alt="Volby-do-PSPCRregular.jpg" title="Volby-do-PSPCRregular.jpg" />
+            </a>
+            <a href="https://mv.gov.cz/volby/">
+              <img src="SCRIPT/ViewBanner.aspx?docid=22528701" alt="Volby 2025 (234 x 58 px) (234 x 58 px).png" title="Volby 2025 (234 x 58 px) (234 x 58 px).png" />
+            </a>
+            <a href="https://mv.gov.cz/">
+              <img src="SCRIPT/ViewBanner.aspx?docid=22520642" alt="Interaktivni_formulare-kapitalky-bold.jpg" title="Interaktivni_formulare-kapitalky-bold.jpg" />
+            </a>
+            <a href="https://www.mvcr.cz/clanek/odbory-odbor-hlavniho-architekta-egovernmentu.aspx">
+              <img src="SCRIPT/ViewBanner.aspx?docid=22328249" alt="Odbor hlavního architekta eGovernmentu" title="Odbor hlavního architekta eGovernmentu" />
+            </a>
+          </p>
+        </div>
+        <div class="clr" id="endSideCol"> </div>
+      </div>
+      <hr class="none" id="footer" />
+      <div id="ender">
+        <p class="copyright">© 2025 Ministerstvo vnitra České republiky. Všechna práva vyhrazena.
+    </p>
+        <ul class="links">
+          <li>
+            <a href="mapa-stranek.aspx">Mapa serveru</a> |
+            </li>
+          <li>
+            <a href="clanek/isdoc-web-kontakty-kontakty.aspx">Kontakty</a> |
+            </li>
+          <li>
+            <a href="docDetail.aspx?docid=50&amp;docType=ART">Prohlášení o přístupnosti</a>
+          </li>
+          <li>
+              | <a href="SCRIPT/rss.aspx?nid=">RSS</a>
+          </li>
+        </ul>
+        <div class="clr"> </div>
+      </div>
+      <script type="text/javascript" src="//mv.gov.cz/isdoc/design/js/design-govcz-service.min.js"> </script>
+    </div>
+  </body>
+</html>
