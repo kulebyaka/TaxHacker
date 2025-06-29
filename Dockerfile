@@ -1,65 +1,62 @@
-FROM node:23-slim AS base
+# Builder stage
+FROM node:23-alpine AS builder
 
-# Default environment variables
-ENV PORT=7331
-ENV NODE_ENV=production
-
-# Build stage
-FROM base AS builder
-
-# Install dependencies required for Prisma
-RUN apt-get update && apt-get install -y openssl
-
+# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files and install dependencies
 COPY package*.json ./
+# We also need prisma client
 COPY prisma ./prisma/
-
-# Install dependencies
 RUN npm ci
 
-# Copy source code
+# Copy the rest of the application source code
 COPY . .
 
-# Build the application
+# Build the Next.js application
 RUN npm run build
 
 # Production stage
-FROM base
-
-# Install required system dependencies
-RUN apt-get update && apt-get install -y \
-    ca-certificates \
-    ghostscript \
-    graphicsmagick \
-    openssl \
-    libwebp-dev \
-    postgresql-client \
-    && rm -rf /var/lib/apt/lists/*
+FROM node:23-alpine AS runner
 
 WORKDIR /app
 
-# Create upload directory and set permissions
-RUN mkdir -p /app/upload
+# Install production dependencies
+RUN apk --no-cache add \
+    ca-certificates \
+    ghostscript \
+    graphicsmagick \
+    postgresql-client
 
-# Copy built assets from builder
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package*.json ./
+ENV NODE_ENV=production
+ENV PORT=7331
+
+# Create a non-root user for security
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy the standalone output from the builder stage
+COPY --from=builder /app/.next/standalone ./
+# Copy prisma schema
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/.next ./.next
+# Copy the public and static assets
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/app ./app
-COPY --from=builder /app/next.config.ts ./
+COPY --from=builder /app/.next/static ./.next/static
 
 # Copy and set up entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
+    sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh
 
-# Create directory for uploads
-RUN mkdir -p /app/data
+# Create upload directory and set permissions
+RUN mkdir -p /app/upload
+RUN chown -R nextjs:nodejs /app
+
+# Switch to the non-root user
+USER nextjs
 
 EXPOSE 7331
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["npm", "start"]
+# Set the entrypoint to run the Next.js server
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["node", "server.js"]
