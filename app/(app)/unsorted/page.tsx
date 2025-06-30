@@ -3,6 +3,7 @@ import { UploadButton } from "@/components/files/upload-button"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { AddMorePhotosButton } from "@/components/unsorted/add-more-photos-button"
 import { AnalyzeAllButton } from "@/components/unsorted/analyze-all-button"
 import AnalyzeForm from "@/components/unsorted/analyze-form"
 import { getCurrentUser } from "@/lib/auth"
@@ -16,6 +17,7 @@ import { getSettings } from "@/models/settings"
 import { FileText, PartyPopper, Settings, Upload } from "lucide-react"
 import { Metadata } from "next"
 import Link from "next/link"
+import { DeleteFileButton } from "./delete-file-button"
 
 export const metadata: Metadata = {
   title: "Unsorted",
@@ -62,12 +64,38 @@ export default async function UnsortedPage() {
             id={file.id}
             className="flex flex-row flex-wrap md:flex-nowrap justify-center items-start gap-5 p-5 bg-accent"
           >
-            <div className="w-full max-w-[500px]">
-              <Card>
-                <FilePreview file={file} />
-              </Card>
+            {/* File previews section */}
+            <div className="flex flex-col gap-4">
+              {file.children && file.children.length > 0 && <h3 className="text-lg font-semibold">({file.children ? file.children.length + 1 + " pages" : ""})</h3>}
+              
+              {/* Parent file preview */}
+              <div className="w-full max-w-[500px]">
+                <Card className="relative">
+                  {file.children && file.children.length > 0 && (
+                    <DeleteFileButton fileId={file.id} />
+                  )}
+                  <FilePreview file={file} />
+                </Card>
+              </div>
+
+              {/* Child files previews */}
+              {file.children && file.children.length > 0 && (
+                <div className="flex flex-col gap-4">
+                  {file.children.map((childFile) => (
+                    <div key={childFile.id} className="w-full max-w-[500px]">
+                      <Card className="relative">
+                        <DeleteFileButton fileId={childFile.id} />
+                        <FilePreview file={childFile} />
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <AddMorePhotosButton parentFileId={files[0].id} />
             </div>
 
+            {/* Analysis form */}
             <div className="w-full">
               <AnalyzeForm
                 file={file}

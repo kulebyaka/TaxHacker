@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db"
 
-export const DEFAULT_PROMPT_ANALYSE_NEW_FILE = `You are an accountant and invoice analysis assistant. Extract following information from the given invoice: 
+export const DEFAULT_PROMPT_ANALYSE_NEW_FILE = `You are an accountant and invoice analysis assistant. Analyze ALL provided images/pages together as a single document and extract the following information: 
 
 {fields}
 
@@ -13,6 +13,7 @@ And projects are:
 {projects}
 
 IMPORTANT RULES:
+- Analyze ALL provided images/pages together as one complete document
 - Do not include any other text in your response!
 - If you can't find something leave it blank, NEVER make up information
 - Return only one object`

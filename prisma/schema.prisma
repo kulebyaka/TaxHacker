@@ -162,9 +162,13 @@ model File {
   isReviewed        Boolean  @default(false) @map("is_reviewed")
   isSplitted        Boolean  @default(false) @map("is_splitted")
   cachedParseResult Json?    @map("cached_parse_result")
+  parentId          String?  @map("parent_id") @db.Uuid
+  parent            File?    @relation("FileChildren", fields: [parentId], references: [id], onDelete: Cascade)
+  children          File[]   @relation("FileChildren")
   createdAt         DateTime @default(now()) @map("created_at")
 
   @@map("files")
+  @@index([parentId])
 }
 
 model Transaction {
