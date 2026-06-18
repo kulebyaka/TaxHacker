@@ -2,30 +2,23 @@
 
 <img src="public/logo/512.png" alt="" width="320">
 
-# TaxHacker
+# TaxHacker — Czech Invoice & ISDOC Edition
 
-I'm a small self-hosted accountant app that can help you deal with invoices, receipts and taxes with power of GenAI.<br/><br/>
+I'm a self-hosted, AI-powered invoice assistant focused on **Czech accounting**: I read your invoices and receipts with GenAI, extract Czech-specific data (IČ, DIČ, variabilní symbol, DUZP…), and export valid **ISDOC 6.0.2** electronic invoices.<br/><br/>
 
-[![GitHub Stars](https://img.shields.io/github/stars/vas3k/TaxHacker?color=ffcb47&labelColor=black&style=flat-square)](https://github.com/vas3k/TaxHacker/stargazers)
-[![License](https://img.shields.io/badge/license-MIT-ffcb47?labelColor=black&style=flat-square)](https://github.com/vas3k/TaxHacker/blob/main/LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/vas3k/TaxHacker?color=ff80eb&labelColor=black&style=flat-square)](https://github.com/vas3k/TaxHacker/issues)
-[![Donate](https://img.shields.io/badge/-Donate-f04f88?logo=githubsponsors&logoColor=white&style=flat-square)](https://vas3k.com/donate/)
+[![License](https://img.shields.io/badge/license-MIT-ffcb47?labelColor=black&style=flat-square)](https://github.com/kulebyaka/TaxHacker/blob/main/LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/kulebyaka/TaxHacker?color=ff80eb&labelColor=black&style=flat-square)](https://github.com/kulebyaka/TaxHacker/issues)
+[![ISDOC](https://img.shields.io/badge/ISDOC-6.0.2-2ea44f?labelColor=black&style=flat-square)](https://isdoc.cz/)
 
-**Share TaxHacker**
-
-[![Share on X](https://img.shields.io/badge/-share%20on%20x-black?labelColor=black&logo=x&logoColor=white&style=flat-square)](https://x.com/intent/tweet?text=Check%20out%20TaxHacker%20-%20an%20AI-powered%20assistant%20that%20helps%20you%20manage%20receipts%2C%20checks%2C%20and%20invoices%20with%20ease.&url=https%3A%2F%2Fgithub.com%2Fvas3k%2FTaxHacker)
-[![Share on LinkedIn](https://img.shields.io/badge/-share%20on%20linkedin-black?labelColor=black&logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fvas3k%2FTaxHacker)
-[![Share on Reddit](https://img.shields.io/badge/-share%20on%20reddit-black?labelColor=black&logo=reddit&logoColor=white&style=flat-square)](https://www.reddit.com/submit?title=Check%20out%20TaxHacker%20-%20an%20AI-powered%20assistant%20that%20helps%20you%20manage%20receipts%2C%20checks%2C%20and%20invoices%20with%20ease.&url=https%3A%2F%2Fgithub.com%2Fvas3k%2FTaxHacker)
+> This is a fork of the excellent [vas3k/TaxHacker](https://github.com/vas3k/TaxHacker) general-purpose GenAI accounting app, specialized for the Czech invoicing workflow and the ISDOC electronic-invoice standard.
 
 </div>
 
 ## 👋🏻 Getting Started
 
-TaxHacker is a self-hosted accounting app for freelancers and small businesses who want to save time and automate expences and income tracking with power of GenAI. It can recognise uploaded photos, receipts or PDFs and extract important data (e.g. name, total amount, date, merchant, VAT) and save it as structured transactions to a table. You can also create your own custom fields to extract with your LLM prompts.
+TaxHacker (Czech Invoice & ISDOC Edition) is a self-hosted app for freelancers and small businesses doing accounting in the Czech Republic. Upload a photo or PDF of an invoice and the LLM recognises it, extracts all the Czech-specific details — supplier/customer IČ and DIČ, variable/constant/specific payment symbols, DUZP tax date, per-line VAT breakdown — and stores it as a structured transaction. From there you can **export a fully valid ISDOC 6.0.2 e-invoice** ready to feed into Czech accounting systems.
 
-It supports automatic currency conversion on a day of transaction. Even for crypto!
-
-Built-in system of filters, support for multiple projects, import-export of transactions for a certain time (along with attached files) and custom categories, allows you to simplify reporting and tax filing.
+On top of the Czech workflow it keeps everything the original TaxHacker offers: custom LLM-extracted fields, automatic multi-currency conversion (even crypto), projects, categories, full-text search, filters, and CSV/archive export — so it also works as a general GenAI bookkeeping tool.
 
 ![Dashboard](docs/screenshots/title.png)
 
@@ -41,10 +34,12 @@ https://github.com/user-attachments/assets/3326d0e3-0bf6-4c39-9e00-4bf0983d9b7a
 
 > 🎥 [Watch the video](https://github.com/user-attachments/assets/3326d0e3-0bf6-4c39-9e00-4bf0983d9b7a)
 
-Take a photo on upload or a PDF and TaxHacker will automatically recognise, categorise and store transaction information.
+Take a photo on upload or a PDF and TaxHacker will automatically recognise, categorise and store transaction information. A dedicated Czech-invoice prompt extracts the fields that matter for Czech accounting.
 
 - Upload multiple documents and store in "unsorted" until you get the time to sort them out by hand or with an AI
+- Add more photos/pages to an existing document for multi-page invoices
 - Use LLM to extract key information like date, amount, and vendor
+- Extract Czech-specific data: IČ, DIČ, variable/constant/specific symbols, DUZP, payment method, and per-line VAT rates
 - Automatically categorize transactions based on its content
 - Store everything in a structured format for easy filtering and retrieval
 - Organize your documents by a tax season
@@ -97,18 +92,19 @@ Once all documents have been uploaded and analyzed, you can view, filter and exp
 - Export filtered transactions to CSV or ISDOC with attached documents
 - Upload your entire income and expense history at the end of the year for your tax advisor to analyze
 
-### `6` Czech Invoice Support
+### `6` Czech Invoice Support & ISDOC export
 
 ![Czech Invoice Support](docs/screenshots/czech_invoice.png)
 
-Specialized support for Czech accounting needs with advanced features:
+This is the headline feature of this edition. Specialized support for Czech accounting needs:
 
 - Automatic detection and parsing of Czech invoice formats
-- Extraction of VAT numbers, IČO, DIČ, and other Czech-specific fields
+- Extraction of IČ, DIČ, VAT numbers, payment symbols (variabilní / konstantní / specifický), DUZP and other Czech-specific fields
 - Support for Czech date formats and currency (CZK)
-- Validation of Czech tax identification numbers
-- Custom templates for common Czech invoice layouts
-- Integration with Czech accounting systems through ISDOC export
+- **Generate valid ISDOC 6.0.2 XML e-invoices** from any transaction, including supplier/customer details, line items, payment info and full VAT breakdown
+- **Validate generated ISDOC** against the official `isdoc-invoice-6.0.2.xsd` schema before export
+- Integration with Czech accounting systems through ISDOC export (single transaction or bulk)
+- Toggle ISDOC features per instance from the global settings
 
 ### `7` Local data storage and self-hosting
 
@@ -119,7 +115,7 @@ Specialized support for Czech accounting needs with advanced features:
 TaxHacker can be self-hosted on your own infrastructure for complete control over your data and application environment. We provide a [Docker image](./Dockerfile) and [Docker Compose](./docker-compose.yml) files that makes setting up TaxHacker simple:
 
 ```bash
-curl -O https://raw.githubusercontent.com/vas3k/TaxHacker/main/docker-compose.yml
+curl -O https://raw.githubusercontent.com/kulebyaka/TaxHacker/main/docker-compose.yml
 
 docker compose up
 ```
@@ -140,7 +136,7 @@ For example:
 ```yaml
 services:
   app:
-    image: ghcr.io/vas3k/taxhacker:latest
+    image: ghcr.io/kulebyaka/taxhacker:latest
     ports:
       - "7331:7331"
     environment:
@@ -182,7 +178,7 @@ Set up a local development environment with these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/vas3k/TaxHacker.git
+git clone https://github.com/kulebyaka/TaxHacker.git
 cd TaxHacker
 
 # Install dependencies
@@ -225,14 +221,12 @@ Contributions to TaxHacker are welcome and appreciated! Here's how you can help:
 
 All work is done on GitHub through issues and pull requests.
 
-[![PRs Welcome](https://img.shields.io/badge/🤯_PRs-welcome-ffcb47?labelColor=black&style=for-the-badge)](https://github.com/vas3k/TaxHacker/pulls)
+[![PRs Welcome](https://img.shields.io/badge/🤯_PRs-welcome-ffcb47?labelColor=black&style=for-the-badge)](https://github.com/kulebyaka/TaxHacker/pulls)
 
-## ❤️ Donate
+## 🙏 Credits
 
-If TaxHacker has helped you - help us in return! You donations will support maintainance and development. If you find this project valuable for your personal or business use, consider making a donation.
-
-[![Donate to TaxHacker developers](https://img.shields.io/badge/❤️-donate%20to%20Taxhacker%20devs-f08080?labelColor=black&style=for-the-badge)](https://vas3k.com/donate/)
+This project is a fork of [vas3k/TaxHacker](https://github.com/vas3k/TaxHacker) by [Vasily Zubarev](https://vas3k.com). Huge thanks for the original GenAI accounting app that made this Czech/ISDOC edition possible — if you find the upstream project valuable, consider [supporting the original author](https://vas3k.com/donate/).
 
 ## 📄 License
 
-TaxHacker is licensed under the MIT License - see the [LICENSE](https://github.com/vas3k/TaxHacker/blob/main/LICENSE) file for details.
+TaxHacker is licensed under the MIT License - see the [LICENSE](https://github.com/kulebyaka/TaxHacker/blob/main/LICENSE) file for details.
